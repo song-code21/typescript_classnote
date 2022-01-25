@@ -13,3 +13,21 @@ function logMessage2(value: string | number) {
 
 logMessage2('hello');
 logMessage2(100);
+
+//유니온 타입의 장점
+//기본적으로 유니온 타입은 특정 파라미터나 변수에 한가지 이상의 타입을 사용하고 싶을 때 파이프 연산자를 사용하면 된다. 
+var cindy: string | number | boolean; //복습
+
+
+function logMessage3(value: string | number) {
+  if(typeof value === 'number') {
+    value.toLocaleString();
+  }
+  if (typeof value === 'string') {
+    value.toString();
+  }
+
+  throw new TypeError('value must be string or number');
+}
+logMessage3('hello');
+logMessage3(100);
