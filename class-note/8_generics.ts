@@ -31,15 +31,31 @@
 
 //기존 타입 정의 방식과 제네릭의 차이점 1. 함수 중복선언의 단점
 //인자를 그대로 출력하는 함수의 내용은 동일한데, 타입에 따라 중간 처리가 달라진다면, 같은 리턴값을 가지는 함수들을 많이 만들어야 하는 문제 발생
-function logText(text: string) {
-  text.split('').reverse().join();
+// function logText(text: string) {
+//   text.split('').reverse().join();
+//   return text;
+// }
+
+// function logNum(num: number) {
+//   console.log(num);
+//   return num;
+// }
+
+// logText('안녕');
+// logNum(10);
+
+//제네릭 타입
+// function logText<T>(text: T): T {
+//   return text;
+// }
+
+// let str1: <T>(text: T) => T = logText;
+// let str2: {<T>(text: T): T} = logText;
+
+interface GenericLogTextFn {
+  <T>(text: T): T;
+}
+function logText<T>(text:T): T {
   return text;
 }
-
-function logNum(num: number) {
-  console.log(num);
-  return num;
-}
-
-logText('안녕');
-logNum(10);
+let myString: GenericLogTextFn = logText;
