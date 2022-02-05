@@ -44,6 +44,17 @@
 // logText('안녕');
 // logNum(10);
 
+// 제네릭의 장점과 타입 추론에서의 이점
+// 타입을 각각 선언해서 따로 만들 필요가 없이 실제로 함수를 정의할 때 타입을 비워놓고 호출 시점에 타입을 넣어주는 것이 이점이다.
+
+function logText<T>(text: T): T {
+  console.log(text);
+  return text;
+}
+
+const str = logText<string>('abc');
+str.split('');
+
 //제네릭 타입
 // function logText<T>(text: T): T {
 //   return text;
@@ -52,10 +63,11 @@
 // let str1: <T>(text: T) => T = logText;
 // let str2: {<T>(text: T): T} = logText;
 
-interface GenericLogTextFn {
-  <T>(text: T): T;
-}
-function logText<T>(text:T): T {
-  return text;
-}
-let myString: GenericLogTextFn = logText;
+// interface GenericLogTextFn {
+//   <T>(text: T): T;
+// }
+// function logText<T>(text:T): T {
+//   return text;
+// }
+// let myString: GenericLogTextFn = logText;
+
