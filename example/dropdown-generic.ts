@@ -1,16 +1,29 @@
-const emails = [
+interface Email {
+  value: string;
+  selected: boolean
+}
+
+const emails: Email[] = [
   { value: 'naver.com', selected: true },
   { value: 'gmail.com', selected: false },
   { value: 'hanmail.net', selected: false },
 ];
 
-const numberOfProducts = [
+interface ProductNum {
+  value: number;
+  selected: boolean
+}
+const numberOfProducts: ProductNum[]= [
   { value: 1, selected: true },
   { value: 2, selected: false },
   { value: 3, selected: false },
 ];
 
-function createDropdownItem(item) {
+
+// email과 numberOfProducts를 모두 수용할 수 있는 타입을 정의해줘야 함.(제네릭 활용)
+// 인터페이스를 사용하면 각 타입 정의 부분이 더 많이 생기게 된다. 
+// 향후에 어떤 타입이 오던간에 그때그때마다 유연하게 가져다가 쓸 수 있게 하는 것 -> 제네릭
+function createDropdownItem(item: Email | ProductNum) {
   const option = document.createElement('option');
   option.value = item.value.toString();
   option.innerText = item.value.toString();
