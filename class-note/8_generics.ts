@@ -71,3 +71,30 @@ str.split('');
 // }
 // let myString: GenericLogTextFn = logText;
 
+
+//인터페이스에 제네릭을 선언하는 방법
+// interface Dropdown {
+//   value: string;
+//   selected: boolean;
+// }
+
+// const obj: Dropdown = {
+//   value: 10, // string으로 선언해야 하는데 number로 선언해서 에러남
+//   selected: false
+// }
+
+// const obj: Dropdown  ={
+//   value: '1',
+//   selected: false
+// }
+
+interface Dropdown<T> {
+  value: T;
+  selected: boolean;
+}
+
+// Dropdown에 string을 넣으면 value는 string값, number를 넣으면 number값이 된다. 
+const obj: Dropdown<string> = {
+  value: '10',
+  selected: false
+}
