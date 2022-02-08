@@ -98,3 +98,11 @@ const obj: Dropdown<string> = {
   value: '10',
   selected: false
 }
+
+// 제네릭 클래스
+class GenericMath<T> {
+  pi: T;
+  sum: (x: T, y: T) => T;
+}
+
+let math = new GenericMath<number>();
