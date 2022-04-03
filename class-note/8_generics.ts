@@ -107,3 +107,48 @@ class GenericMath<T> {
 }
 
 let math = new GenericMath<number>();
+
+//제네릭의 타입 제한
+// function logTextLength<T>(text: T): T {
+//   console.log(text.length)
+//   return text;
+// }
+//제네릭으로 보내는 타입에는 배열객체에서 사용할 수 있는 length를 사용할 수 있는지 아닌지 알 수 없다.
+//제네릭에 타입 한트를 추가적으로 줘서 타입제한을 해줄 수 있다. 
+// function logTextLength<T>(text: T[]):T[] {
+//   console.log(text.length);
+//   return text;
+// }
+// logTextLength<string>(['hi', 'hello']);
+
+// 제네릭 타입 제한 2 - 정의된 타입 이용하기
+interface LengthType {
+  length: number;
+}
+
+// T는 lengthType을 가지고 있는 타입으로 인식 lengthType에는 length가 number타입으로 정의되어 있음
+function logTextLength<T extends LengthType>(text: T):T {
+  text.length;
+  return text;
+}
+logTextLength('a');
+// logTextLength(10); length가 내부 속성으로 제공되고 있지 않아서 포함할 수 없음
+
+interface ShoppingItem {
+  name: string;
+  price: number;
+  stock: number;
+}
+
+// function getShoppingItemOption<T>(itemOption: T): T {
+//   return itemOption;
+// }
+// getShoppingItemOption(1); // 어떤 타입이던 함수를 호출한 시점에서 제네릭타입만 잘 넘겨주면 문제없이 사용할 수 있음
+// 하지만 getShoppingItemOption에 우리가 선언해둔 ShoppingItem에 있는 속성들만 받겠다고 제약할 경우에는 keyof로 타입을 제한할 수 있다.
+
+function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T {
+  return itemOption
+};
+getShoppingItemOption('name');
+getShoppingItemOption('price');
+
