@@ -4,6 +4,7 @@
 
 //문맥상의 타이핑(Contextual typing)
 window.onmousedown = function(mouseEvent) {
-  console.log(mouseEvent.button);
-  console.log(mouseEvent.monkey);
+  console.log(mouseEvent.button); //ok
+  console.log(mouseEvent.monkey); //error
 }
+

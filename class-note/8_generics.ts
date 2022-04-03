@@ -93,6 +93,7 @@ interface Dropdown<T> {
   selected: boolean;
 }
 
+// 인터페이스에 제네릭을 사용하면 특정 속성에 대한 타입을 별도로 사용시점에 정의해서 넘겨줄 수 있다.
 // Dropdown에 string을 넣으면 value는 string값, number를 넣으면 number값이 된다. 
 const obj: Dropdown<string> = {
   value: '10',
